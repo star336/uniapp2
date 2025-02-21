@@ -5,6 +5,7 @@
       <text class="title">{{ title }}</text>
     </view>
   </view>
+
 </template>
 
 <script>
@@ -14,7 +15,8 @@ export default {
       title: 'Hello',
     }
   },
-  onLoad() {},
+  onLoad() {
+  },
   methods: {},
 }
 </script>

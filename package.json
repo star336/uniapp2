@@ -49,6 +49,7 @@
     "@dcloudio/uni-mp-weixin": "3.0.0-4040520250104002",
     "@dcloudio/uni-mp-xhs": "3.0.0-4040520250104002",
     "@dcloudio/uni-quickapp-webview": "3.0.0-4040520250104002",
+    "vk-uview-ui": "^1.5.2",
     "vue": "3.4.21",
     "vue-i18n": "9.14.2"
   },
@@ -62,5 +63,11 @@
     "sass": "^1.85.0",
     "sass-loader": "^16.0.5",
     "vite": "5.2.8"
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u-(.*)": "vk-uview-ui/components/u-$1/u-$1.vue"
+    }
   }
 }

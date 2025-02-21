@@ -1,8 +1,5 @@
-<template>
-  <u-button>月落</u-button>
-</template>
 <script>
-import UAlertTips from "./uni_modules/vk-uview-ui/components/u-alert-tips/u-alert-tips.vue";
+import UAlertTips from "vk-uview-ui/components/u-alert-tips/u-alert-tips.vue";
 
 export default {
   components: {UAlertTips},
@@ -19,5 +16,5 @@ export default {
 </script>
 
 <style>
-@import "./uni_modules/vk-uview-ui/index.scss";
+@import "vk-uview-ui/index.scss";
 </style>
