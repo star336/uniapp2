@@ -2,14 +2,19 @@
   <view class="content">
     <image class="logo" src="/static/logo.png"></image>
     <view class="text-area">
-      <text class="title">{{ title }}</text>
+      <text class="title text-red-500">{{ title }}</text>
+      <view class="title text-red-500">{{ title }}</view>
     </view>
   </view>
 
 </template>
 
 <script>
+import UButton from "vk-uview-ui/components/u-button/u-button.vue";
+import UAlertTips from "vk-uview-ui/components/u-alert-tips/u-alert-tips.vue";
+
 export default {
+  components: {UAlertTips, UButton},
   data() {
     return {
       title: 'Hello',

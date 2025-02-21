@@ -1,6 +1,7 @@
 <script>
 import UAlertTips from "vk-uview-ui/components/u-alert-tips/u-alert-tips.vue";
 
+
 export default {
   components: {UAlertTips},
   onLaunch: function () {
@@ -16,5 +17,8 @@ export default {
 </script>
 
 <style>
-@import "vk-uview-ui/index.scss";
+  @import "vk-uview-ui/index.scss";
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>
