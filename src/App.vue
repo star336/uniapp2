@@ -17,8 +17,9 @@ export default {
 </script>
 
 <style>
-  @import "vk-uview-ui/index.scss";
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@import "vk-uview-ui/index.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 </style>
