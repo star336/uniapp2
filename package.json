@@ -52,7 +52,6 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-4040520250104002",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.3",
-    "vk-uview-ui": "^1.5.2",
     "vue": "3.4.21",
     "vue-i18n": "9.14.2"
   },
@@ -68,11 +67,5 @@
     "tailwindcss": "^3.4.17",
     "vite": "5.2.8",
     "weapp-tailwindcss": "^4.0.3"
-  },
-  "easycom": {
-    "autoscan": true,
-    "custom": {
-      "^u-(.*)": "vk-uview-ui/components/u-$1/u-$1.vue"
-    }
   }
 }

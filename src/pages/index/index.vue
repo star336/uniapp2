@@ -9,11 +9,7 @@
 </template>
 
 <script>
-import UButton from "vk-uview-ui/components/u-button/u-button.vue";
-import UAlertTips from "vk-uview-ui/components/u-alert-tips/u-alert-tips.vue";
-
 export default {
-  components: {UAlertTips, UButton},
   data() {
     return {
       title: 'Hello',
