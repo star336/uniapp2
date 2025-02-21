@@ -1,9 +1,19 @@
+const path = require("path");
+
+const resolve = (p) => {
+    return path.resolve(__dirname, p);
+};
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,vue}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+    content: ['./index.html', './src/**/*.{html,js,ts,jsx,tsx,vue}'].map(resolve),
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+    corePlugins: {
+        // 跨多端可以 h5 开启，小程序关闭
+        preflight: false,
+    }
 }
 
