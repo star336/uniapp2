@@ -51,6 +51,8 @@
     "@dcloudio/uni-mp-xhs": "3.0.0-4040520250104002",
     "@dcloudio/uni-quickapp-webview": "3.0.0-4040520250104002",
     "autoprefixer": "^10.4.20",
+    "axios": "^1.7.9",
+    "pinia": "^2.0.0-rc.10",
     "postcss": "^8.5.3",
     "vue": "3.4.21",
     "vue-i18n": "9.14.2"
