@@ -52,9 +52,10 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-4040520250104002",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.9",
-    "pinia": "^2.0.0-rc.10",
+    "pinia": "^3.0.1",
+    "pinia-plugin-persistedstate": "^4.2.0",
     "postcss": "^8.5.3",
-    "vue": "3.4.21",
+    "vue": "^3.5.11",
     "vue-i18n": "9.14.2"
   },
   "devDependencies": {
