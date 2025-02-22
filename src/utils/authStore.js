@@ -1,9 +1,9 @@
 // authStore.js
-import {defineStore} from 'pinia';
+import { defineStore } from 'pinia';
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
-        token: localStorage.getItem('token') || null,
+        token: null,
         isLoggingIn: false
     }),
     getters: {
@@ -12,11 +12,9 @@ export const useAuthStore = defineStore('auth', {
     actions: {
         setToken(token) {
             this.token = token;
-            localStorage.setItem('token', token);
         },
         removeToken() {
             this.token = null;
-            localStorage.removeItem('token');
         },
         startLoggingIn() {
             this.isLoggingIn = true;
@@ -24,5 +22,6 @@ export const useAuthStore = defineStore('auth', {
         endLoggingIn() {
             this.isLoggingIn = false;
         }
-    }
+    },
+    persist: true // 开启持久化
 });
