@@ -49,12 +49,12 @@
             <u-button type="primary">登陆</u-button>
             <u-button type="primary" @click="updateScore(userIndex, 1)">1</u-button>
             <u-button type="primary">2</u-button>
-            <u-button type="primary">record</u-button>
+            <u-button type="primary" @click="getRecords">record</u-button>
             <u-button type="primary" @click="updateUseTime">{{ time_words }}</u-button>
             <u-button type="primary" @click="next">next</u-button>
             <CustomToast v-if="showToast" :message="toastMessage" :width="toastWidth" :height="toastHeight"/>
             <u-button type="primary" @click="switchUserIndex">switch</u-button>
-            <u-button type="primary">finish</u-button>
+            <u-button type="primary" @click="next(1)">finish</u-button>
             <u-button type="primary" @click="clearData">zero</u-button>
             <u-button type="primary">setting</u-button>
             <u-button type="primary">back</u-button>
@@ -191,15 +191,19 @@ export default {
     }
   },
   methods: {
-    next() {
+    getRecords() {
+      const records = this.authStore.doubleModeHistory
+      console.log('55556879', records)
+    },
+    next(value = 0) {
       if (!this.authStore.doubleMode.total_round) {
         this.showCustomToast("not setting total round")
       }
-      if (this.authStore.doubleMode.a_score == this.authStore.doubleMode.b_score) {
+      if (this.authStore.doubleMode.a_score === this.authStore.doubleMode.b_score) {
         this.showCustomToast("error same score")
       }
       if (this.authStore.doubleMode.total_round - 1 <= 0) {
-        this.showCustomToast("error the last round")
+        this.showCustomToast("error the last round，please finish match")
       }
       if (this.authStore.doubleMode.a_score > this.authStore.doubleMode.b_score) {
         this.authStore.doubleMode["a_win_round"] += 1;
@@ -207,6 +211,19 @@ export default {
         this.authStore.doubleMode["b_win_round"] += 1;
       }
 
+      // 记录结束时的数据
+      this.authStore.addDoubleModeHistory({
+        'a_nickname': "",
+        'a_avatar': "",
+        'a_score': this.authStore.doubleMode.a_score,
+        'a_max': this.authStore.doubleMode.a_max,
+        'b_nickname': "",
+        'b_avatar': "",
+        'b_score': this.authStore.doubleMode.b_score,
+        'b_max': this.authStore.doubleMode.b_max,
+      })
+
+      // 数据重置
       this.authStore.setDoubleMode({
         a_score: 0,
         a_win_round: this.authStore.doubleMode.a_win_round,
@@ -214,16 +231,19 @@ export default {
         a_max: 0,
         a_max_tmp: 0,
         b_score: 0,
-        b_win_round: this.authStore.doubleMode.b_win_round,
         b_fault: 0,
         b_max: 0,
         b_max_tmp: 0,
+        user_index: 0,
+        b_win_round: this.authStore.doubleMode.b_win_round,
         total_round: this.authStore.doubleMode.total_round,
         done_round: this.authStore.doubleMode.done_round + 1,
-        user_index: 0,
         double_use_time: this.authStore.doubleMode.double_use_time,
-        double_timer_status: this.authStore.doubleMode.double_timer_status
+        double_timer_status: this.authStore.doubleMode.double_timer_status,
+        is_finish: value
       })
+
+
     },
     showCustomToast(toastMessage) {
       this.toastMessage = toastMessage;
@@ -254,8 +274,11 @@ export default {
         done_round: 0,
         user_index: 0,
         double_use_time: 0,
-        double_timer_status: 0
+        double_timer_status: 0,
+        is_finish: 0
       })
+      this.authStore.doubleModeHistory = []
+
     },
     updateScore(index, value) {
       // 可以直接使用组件顶层定义的 authStore
@@ -263,6 +286,10 @@ export default {
 
       user = index === 0 ? 'a_score' : 'b_score';
       userMax = index === 0 ? 'a_max' : 'b_max';
+
+      if (!this.authStore.doubleMode.total_round) {
+        this.showCustomToast("not set total round yet")
+      }
 
       this.authStore.doubleMode[user] += value;
       console.log(user, userMax);

@@ -21,7 +21,9 @@ export const useAuthStore = defineStore('auth', {
             user_index: 0,
             double_use_time: 0,
             double_timer_status: 0,
-        }
+            is_finish: 0
+        },
+        doubleModeHistory: []
     }),
     getters: {
         isTokenValid: (state) => !!state.token
@@ -50,7 +52,11 @@ export const useAuthStore = defineStore('auth', {
         updateDoubleMode(name, value) {
             // 也可以更新对象中的某个属性
             this.doubleMode[name] = value;
-        }
+        },
+        addDoubleModeHistory(data) {
+            this.doubleModeHistory.push(data)
+            console.log("3333",this.doubleModeHistory)
+        },
     },
     setup() {
         const doubleTimer = ref < NodeJS.Timeout | null > null;
