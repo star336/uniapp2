@@ -1,0 +1,20 @@
+{
+    "id": "keyboard-listener",
+    "name": "keyboard-listener",
+    "displayName": "keyboard-listener",
+    "version": "1.0.4",
+    "description": "uni-app 全局按键事件监听",
+    "keywords": [
+        "键盘",
+        "按键",
+        "keyboard",
+        "keydown",
+        "keyup"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ]
+    }
+}
